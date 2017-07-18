@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*Third party */
+        Dimsav\Translatable\TranslatableServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+
     ],
 
     /*
