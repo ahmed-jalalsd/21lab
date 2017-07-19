@@ -6,10 +6,12 @@
   <body>
   @include('inc.nav')
     <div class="container">
-    @yield('content')
-    @include('inc.footer')
+      {{ Auth::check() ? "logged in" : "logged out" }}
+      @yield('content')
+      @include('inc.footer')
     </div>
     @include('inc.javascript')
     @yield('scripts')
+    
   </body>
 </html>

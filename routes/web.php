@@ -12,8 +12,19 @@
 */
 
 
-Route::get('/', 'HomeController@index')->name('home');
 
 /*The route for the gallery that generate images to the home page slider*/
+
 Route::resource('categories', 'CategoriesController');
 Route::resource('contents', 'ContentsController');
+Route::resource('posts', 'PostsController');
+
+Route::get('/',function()
+   {
+     return View('welcome');
+   });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
