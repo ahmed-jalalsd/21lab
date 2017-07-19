@@ -36,7 +36,7 @@ class CreateDownloadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('downloads');
         Schema::dropIfExists('category_download');
+        Schema::dropIfExists('downloads');
     }
 }

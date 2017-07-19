@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Content;
 use Illuminate\Http\Request;
+use File;
 
 class ContentsController extends Controller
 {
@@ -24,7 +25,7 @@ class ContentsController extends Controller
      */
     public function create()
     {
-        //
+      return view('backend.content.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class ContentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'title' => 'required|max:255',
+        'body' => 'required'
+      ]);
+      $content = new Content();
+      $content->title = $request->title;
+      $content->body = $request->body;
+      $content->save();
+      return redirect()->route('contents.show' , $content->id);
     }
 
     /**
@@ -46,7 +55,8 @@ class ContentsController extends Controller
      */
     public function show(Content $content)
     {
-        //
+      $content = Content::find($content);
+      return View('backend.content.show')->withContent($content);
     }
 
     /**
@@ -57,7 +67,8 @@ class ContentsController extends Controller
      */
     public function edit(Content $content)
     {
-        //
+        $content = Content::find($content);
+        return View('backend.content.edit')->withContent($content);
     }
 
     /**
@@ -69,7 +80,14 @@ class ContentsController extends Controller
      */
     public function update(Request $request, Content $content)
     {
-        //
+      $this->validate($request, [
+        'title' => 'required|max:255',
+        'body' => 'required'
+      ]);
+      $content->title = $request->title;
+      $content->body = $request->body;
+      $content->update();
+      return redirect()->route('contents.show' , $content->id);
     }
 
     /**

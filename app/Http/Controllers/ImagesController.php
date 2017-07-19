@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ImagesController extends Controller
 {
@@ -24,7 +25,6 @@ class ImagesController extends Controller
      */
     public function create()
     {
-        return view('backend.images.create');
     }
 
     /**
@@ -35,8 +35,9 @@ class ImagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
+
 
     /**
      * Display the specified resource.

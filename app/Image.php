@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Dimsav\Translatable\Translatable;
 
 class Image extends Model
 {
+  public $translatedAttributes = ['gallery_title','gallery_caption', 'slider_title', 'slider_caption'];
+
   public function categories(){
     return $this->belongsTo(Category::class, 'category_id');
   }
