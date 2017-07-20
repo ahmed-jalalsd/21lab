@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-4">
     <h1>Create a content</h1>
     <hr>
     {!! Form::open(['route' => 'posts.store', 'files' => 'true']) !!}

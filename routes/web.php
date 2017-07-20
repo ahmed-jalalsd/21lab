@@ -14,10 +14,12 @@
 
 
 /*The route for the gallery that generate images to the home page slider*/
-
-Route::resource('categories', 'CategoriesController');
-Route::resource('contents', 'ContentsController');
-Route::resource('posts', 'PostsController');
+Route::group(['prefix' => '/Admin'], function() {
+  Route::get('/' , 'AdminController@index')->name('dashboard');
+  Route::resource('categories', 'CategoriesController');
+  Route::resource('contents', 'ContentsController');
+  Route::resource('posts', 'PostsController');
+});
 
 Route::get('/',function()
    {

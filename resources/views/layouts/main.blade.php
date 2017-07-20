@@ -5,6 +5,7 @@
 </head>
   <body>
   @include('inc.nav')
+  @include('inc.backend-sidebar')
     <div class="container">
       {{ Auth::check() ? "logged in" : "logged out" }}
       @yield('content')
@@ -12,6 +13,6 @@
     </div>
     @include('inc.javascript')
     @yield('scripts')
-    
+
   </body>
 </html>

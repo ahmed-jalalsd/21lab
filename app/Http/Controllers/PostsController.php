@@ -20,7 +20,8 @@ class PostsController extends Controller
      }
     public function index()
     {
-        //
+      $posts = Post::all();
+      return view('backend.post.all-post', compact('posts'));
     }
 
     /**

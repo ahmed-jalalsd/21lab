@@ -19,7 +19,8 @@ class ContentsController extends Controller
     }
     public function index()
     {
-        //
+      $contents = Content::all();
+      return view('backend.content.all-content', compact('contents'));
     }
 
     /**
