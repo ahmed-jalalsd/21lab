@@ -13,9 +13,13 @@ class ImagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct(){
+       $this->middleware('auth');
+     }
     public function index()
     {
-        //
+      $images = Image::all();
+      return view('backend.image.index')->withImages($images);
     }
 
     /**
@@ -25,6 +29,7 @@ class ImagesController extends Controller
      */
     public function create()
     {
+      return view('backend.image.create');
     }
 
     /**
@@ -35,8 +40,31 @@ class ImagesController extends Controller
      */
     public function store(Request $request)
     {
-
+      $image = new Image();
+      if ($request->input('choose') == 1) {
+        $image->slider_title = $request->slider_title;
+        $image->slider_caption = $request->slider_caption;
+        $image->flag_zippo = $request->choose;
+        if($request->hasFile('slider_image')) {
+          $file = Input::file('slider_image');
+          $filename = time(). '-' .$file->getClientOriginalName();
+          $image->slider_image = $filename;
+          $file->move(public_path().'/images/slider', $filename);
+        }
+        }else{
+          $image->gallery_title = $request->slider_title;
+          $image->gallery_caption = $request->slider_caption;
+          $image->flag_zippo = $request->choose;
+          if($request->hasFile('slider_image')) {
+            $file = Input::file('slider_image');
+            $filename = time(). '-' .$file->getClientOriginalName();
+            $image->slider_image = $filename;
+            $file->move(public_path().'/images/gallery', $filename);
+        }
     }
+    $image->save();
+    return  redirect()->route('images.show', $image->id);
+  }
 
 
     /**
@@ -45,9 +73,10 @@ class ImagesController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show($id)
     {
-        //
+      $image = Image::find($id);
+      return View('backend.image.show')->withImage($image);
     }
 
     /**
@@ -56,9 +85,10 @@ class ImagesController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit($id)
     {
-        //
+      $image = Image::find($id);
+      return View('backend.image.edit')->withImage($image);
     }
 
     /**
@@ -70,7 +100,29 @@ class ImagesController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+      if ($request->input('choose') == 1) {
+        $image->slider_title = $request->slider_title;
+        $image->slider_caption = $request->slider_caption;
+        $image->flag_zippo = $request->choose;
+        if($request->hasFile('slider_image')) {
+          $file = Input::file('slider_image');
+          $filename = time(). '-' .$file->getClientOriginalName();
+          $image->slider_image = $filename;
+          $file->move(public_path().'/images/slider', $filename);
+        }
+        }else{
+          $image->gallery_title = $request->slider_title;
+          $image->gallery_caption = $request->slider_caption;
+          $image->flag_zippo = $request->choose;
+          if($request->hasFile('slider_image')) {
+            $file = Input::file('slider_image');
+            $filename = time(). '-' .$file->getClientOriginalName();
+            $image->slider_image = $filename;
+            $file->move(public_path().'/images/gallery', $filename);
+        }
+    }
+    $image->save();
+    return  redirect()->route('images.show', $image->id);
     }
 
     /**
@@ -79,8 +131,10 @@ class ImagesController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+        $image->delete;
+        return redirect()->route('images.index');
     }
 }

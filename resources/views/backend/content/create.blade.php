@@ -1,4 +1,13 @@
 @extends('layouts.main')
+@section('stylesheets')
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script type="text/javascript">
+    tinymce.init({
+      selector:'textarea',
+      plugins:"link" 
+    });
+  </script>
+@endsection
 @section('content')
 <div class="row">
   <div class="col-md-8 col-md-offset-4">

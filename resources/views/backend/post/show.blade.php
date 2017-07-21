@@ -6,7 +6,7 @@
       @foreach ( $posts as $post )
       <h1>{{ $post->title }}</h1>
       <img src="{!! '/images/media/'.$post->media !!}" alt="{{ $post->title }}" height="auto" width="50%">
-      <p class="lead"> {{ $post->body }} </p>
+      <p class="lead">{!! $post->body !!}</p>
     </div>
 
     <div class="col-md-4">

@@ -15,6 +15,7 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('flag_zippo');
             $table->string('slider_image')->nullable();
             $table->string('gallery_image')->nullable();
             $table->string('gallery_title')->nullable();

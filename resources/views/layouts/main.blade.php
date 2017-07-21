@@ -7,7 +7,7 @@
   @include('inc.nav')
   @include('inc.backend-sidebar')
     <div class="container">
-      {{ Auth::check() ? "logged in" : "logged out" }}
+      <!-- {{ Auth::check() ? "logged in" : "logged out" }} -->
       @yield('content')
       @include('inc.footer')
     </div>

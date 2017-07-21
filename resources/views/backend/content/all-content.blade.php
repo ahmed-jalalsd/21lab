@@ -26,7 +26,7 @@
           <tr>
             <th>{{ $content->id }}</th>
             <td>{{ $content->title }}</td>
-            <td>{{ substr($content->body,0,50) }}{{ strlen($content->body) > 50 ? "...." : "" }}</td>
+            <td>{{ substr(strip_tags($content->body),0,50) }}{{ strlen(strip_tags($content->body)) > 50 ? "...." : "" }}</td>
             <td><a href="{{ route('contents.show', $content->id) }}" class="btn btn-default">view</a> <a href="{{ route('contents.edit', $content->id) }}" class="btn btn-default">Edit</a></td>
           </tr>
           @endforeach

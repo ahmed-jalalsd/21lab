@@ -5,7 +5,7 @@
     <div class="col-md-8">
       @foreach ( $content as $cont )
       <h1>{{ $cont->title }}</h1>
-      <p class="lead"> {{ $cont->body }} </p>
+      <p class="lead"> {!! $cont->body !!} </p>
     </div>
 
     <div class="col-md-4">
