@@ -4,7 +4,7 @@
   <script type="text/javascript">
     tinymce.init({
       selector:'textarea',
-      plugins:"link"
+      plugins:"link media"
     });
   </script>
 @endsection

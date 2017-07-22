@@ -21,7 +21,8 @@
         <th>Name</th>
         <th>Caption</th>
         <th>preview</th>
-        <th></th>
+        <th>Type</th>
+        <th>Action</th>
       </thead>
       <tbody>
         @foreach( $images as $image )
@@ -43,9 +44,16 @@
             </td>
             <td>
               @if ($image->flag_zippo == 1)
-                <img src="{!! '/images/slider/'.$image->slider_image !!}" alt="{{ $image->slider_title }}" width="50%" height="auto">
+                <img src="{!! '/images/slider/'.$image->slider_image !!}" alt="{{ $image->slider_title }}" width="25%" height="auto">
               @else
-                <img src="{!! '/images/gallery/'.$image->slider_image !!}" alt="{{ $image->slider_title }}" width="50%" height="auto">
+                <img src="{!! '/images/gallery/'.$image->slider_image !!}" alt="{{ $image->slider_title }}" width="25%" height="auto">
+              @endif
+            </td>
+            <td>
+              @if ($image->flag_zippo == 1)
+                <p>Slider</p>
+              @else 
+                <p>Gallery</p>
               @endif
             </td>
             <td><a href="{{ route('images.show', $image->id) }}" class="btn btn-default">view</a> <a href="{{ route('images.edit', $image->id) }}" class="btn btn-default">Edit</a></td>
@@ -53,6 +61,9 @@
           @endforeach
       </tbody>
     </table>
+    <div class="text-center">
+      {!!  $images->links(); !!} 
+    </div>
   </div>
 </div>
 </div>

@@ -20,7 +20,7 @@
       @if ($image->flag_zippo == 1)
       <p class="lead">{!! $image->slider_caption !!}</p>
       @elseif ($image->flag_zippo == 2)
-      <p class="lead">{!! $image->slider_caption !!}</p>
+      <p class="lead">{!! $image->gallery_caption !!}</p>
       @endif
     </div>
 
@@ -34,6 +34,9 @@
             {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'DELETE']) !!}
               {{ Form::submit('Delete', array('class' => 'btn btn-danger btn-block' ))}}
             {!! Form::close() !!}
+          </div>
+          <div class="col-sm-6 btn-h1-spacing">
+            {!! Html::LinkRoute('images.index', 'See all', array($image->id), array('class' => 'btn btn-default btn-block')) !!}
           </div>
         </div>
       </div>

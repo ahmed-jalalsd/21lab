@@ -12,14 +12,24 @@
       {{ Form::label('title', 'Title:')}}
       {{ Form::text('title', null, array('class' => 'form-control')) }}
 
+
+      <div class="form-group">
+          <label for="categories" class="control-label">Tags:</label>
+          <select class="form-control select2-multi" name="categories[]" multiple="multiple">
+              @foreach($categories as $category)
+                  <option value="{{ $category->id }}" >{{ $category->category_name }}</option>
+              @endforeach
+          </select>
+      </div>
+
       {{ Form::label('media', 'Upload media:')}}
       {{ Form::file('media') }}
 
+      
       {{Form::submit('Upload', array('class' => 'btn btn-success btn-lg btn-block' ,'style' => 'margin-top:20px;'))}}
     {!! Form::close() !!}
   </div>
 </div>
-@endsection
 
 @section('scripts')
   <script src="{{URL::to('js/select2.min.js')}}"></script>
@@ -27,3 +37,5 @@
     $('.select2-multi').select2();
   </script>
 @endsection
+@endsection
+

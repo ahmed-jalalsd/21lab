@@ -17,6 +17,7 @@ class DownloadsController extends Controller
      public function __construct(){
        $this->middleware('auth');
      }
+
     public function index()
     {
       $downloads = Download::all();
@@ -31,7 +32,7 @@ class DownloadsController extends Controller
     public function create()
     {
       $categories = Category::all();
-        return view('backend.download.create', compact('categories'));
+      return view('backend.download.create', compact('categories'));
     }
 
     /**
