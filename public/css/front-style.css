@@ -1,0 +1,141 @@
+/* Add border-box to all element */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+
+.logo-container .logo {
+    overflow: hidden;
+    width: 50px;
+    float: left;
+}
+
+.logo-container .logo img {
+	width: 100%;
+	height: auto;
+}
+
+#carousel-full .carousel-inner>.item>img{
+	width: 100%;
+	height: 600px;
+}
+
+#carousel-mini .carousel .carousel-indicators {
+  bottom: -50px;
+}
+
+#carousel-mini .carousel .carousel-indicators li {
+  background: #9c27b0;
+}
+
+
+.m-t-md {
+    margin-top: 30px;
+}
+
+.space-50 {
+    height: 50px;
+    display: block;
+}
+
+
+.hide_content{
+  display: none;
+}
+
+.text-db a {
+  position: absolute;
+  top: 116%;
+  right: 40%;
+}
+
+.box a{
+  position:relative;
+  overflow:hidden;
+  display:block;
+}
+.box img {
+  width: 100%;
+  height: auto;
+}
+.hovered{
+  position:absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+        background: rgba(156, 39, 176, 0.70);
+        color:white;
+        width: 100%;
+  padding: 46px 20px 20px 20px;
+        border-bottom: 2px solid rgba(236, 1, 93, 0.80);
+        opacity: 0;
+        animation-name: fadeFromtop;
+        -webkit-animation-name: fadeFromtop;
+        animation-duration: 600ms;
+        -webkit-animation-duration: 600ms;
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+}
+.hovered h3 {
+  font-size: 13px;
+}
+.box a:hover .hovered{
+  animation-name: fadeFromBottom;
+        -webkit-animation-name: fadeFromBottom;
+        animation-duration: 600ms;
+        -webkit-animation-duration: 600ms;
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes fadeFromBottom  {
+        0%{
+            opacity:0;
+            -webkit-transform: translateY(100%);
+            -moz-transform: translateY(100%);
+            -ms-transform: translateY(100%);
+            -o-transform: translateY(100%);
+            transform: translateY(100%);
+        }
+        100%{
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+            -moz-transform: translateY(0px);
+            -ms-transform: translateY(0px);
+            -o-transform: translateY(0px);
+            transform: translateY(0px);
+            display: block;
+        }
+    }
+@keyframes fadeFromtop  {
+    0%{
+        opacity:1;
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(400%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}

@@ -18,7 +18,7 @@ class CreateDownloadsTable extends Migration
             $table->string('title');
             $table->string('download_media');
             $table->string('mime');
-      			$table->string('original_filename');
+      		$table->string('original_filename');
             $table->timestamps();
         });
         Schema::create('category_download', function (Blueprint $table) {

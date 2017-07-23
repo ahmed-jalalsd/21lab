@@ -17,9 +17,10 @@
   <div class="col-md-8 col-md-offset-4">
     <table class="table">
       <thead>
-        <th></th>
+        <th>No</th>
         <th>title</th>
         <th>Body</th>
+        <th>Thumbnail</th>
         <th></th>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@
             <th>{{ $post->id }}</th>
             <td>{{ $post->title }}</td>
             <td>{{ substr(strip_tags($post->body),0,50) }} {{ strlen(strip_tags($post->body)) > 50 ? "...." : "" }}</td>
+            <td><img src="{!! '/images/media/'.$post->media !!}" alt="" width="25%" height="auto"></td>
             <td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-default">view</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default">Edit</a></td>
           </tr>
           @endforeach

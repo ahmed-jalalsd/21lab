@@ -23,12 +23,10 @@ Route::group(['prefix' => '/admin'], function() {
   Route::resource('images', 'ImagesController');
 });
 
-Route::get('/',function()
-   {
-     return View('welcome');
-   });
+Route::resource('/', 'PagesController');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}', 'HomeController@show')->name('download');

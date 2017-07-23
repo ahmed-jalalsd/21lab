@@ -17,10 +17,11 @@
   <div class="col-md-8 col-md-offset-4">
     <table class="table">
       <thead>
-        <th></th>
+        <th>No</th>
         <th>title</th>
         <th>Files</th>
-        <th></th>
+        <th>Category</th>
+        <th>Actions</th>
       </thead>
       <tbody>
         @foreach( $downloads as $download )
@@ -28,6 +29,13 @@
             <th>{{ $download->id }}</th>
             <td>{{ $download->title }}</td>
             <td>{{ $download->download_media }}</td>
+            <td>
+               <div class="categories">
+                @foreach ( $download->categories as $category )
+                  <span class="label label-default">{{ $category->category_name }}</span>
+                @endforeach
+              </div>
+            </td>
             <td><a href="{{ route('downloads.show', $download->id) }}" class="btn btn-default">view</a> <a href="{{ route('downloads.edit', $download->id) }}" class="btn btn-default">Edit</a></td>
           </tr>
           @endforeach
