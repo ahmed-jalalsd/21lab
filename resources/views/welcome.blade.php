@@ -63,7 +63,8 @@
         <div class="navbar-header flex-item">
           <div class="navbar-header">
               <div class="navbar-brand">
-                    <img src="{{ URL::to('/icons/icon.png') }}" alt="The BoOk club">
+
+                    <img src="{{ asset('/icons/icon.png') }}" alt="The BoOk club">
                     The BoOk club
                 </div>
 
