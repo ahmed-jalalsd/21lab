@@ -64,7 +64,7 @@
           <div class="navbar-header">
               <div class="navbar-brand">
 
-                    <img src="{!! '/public/icons/icon.png' !!}" alt="The BoOk club">
+                    <img src="{!! '../public/icons/icon.png' !!}" alt="The BoOk club">
                     The BoOk club
                 </div>
 
