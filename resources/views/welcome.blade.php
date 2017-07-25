@@ -64,7 +64,7 @@
           <div class="navbar-header">
               <div class="navbar-brand">
 
-                    <img src="{{ asset('/public/icons/icon.png') }}" alt="The BoOk club">
+                    <img src="{{ asset('/public/images/icon.png') }}" alt="The BoOk club">
                     The BoOk club
                 </div>
 
