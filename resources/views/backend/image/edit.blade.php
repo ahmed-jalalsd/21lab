@@ -20,7 +20,7 @@
       @if ($image->flag_zippo == 1)
       {{ Form::label('slider_caption', ' caption:')}}
       {{ Form::textarea('slider_caption', null, array('class' => 'form-control')) }}
-      @elseif ($image->flag_zippo == 2)
+      @else
       {{ Form::label('gallery_caption', ' caption:')}}
       {{ Form::textarea('gallery_caption', null, array('class' => 'form-control')) }}
       @endif

@@ -2,48 +2,97 @@
 @section('content')
 
 <!-- Navbar will come here -->
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button id="menu-toggle" type="button" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar bar1"></span>
-        <span class="icon-bar bar2"></span>
-        <span class="icon-bar bar3"></span>
-      </button>
-       <div class="logo-container">
-            <div class="logo">
-                <img src="icons/icon.png" alt="The BoOk club">
+  <nav class="navbar navbar-transparent navbar-doublerow navbar-trans navbar-fixed-top navbar-color-on-scroll" role="navigation">
+  <!-- top nav -->
+  <nav class="navbar navbar-top hidden-xs navbar-transparent">
+    <div class="container">
+      <!-- right nav top -->
+      <div class="nav navbar-nav pull-right">
+        <form class="navbar-form" method="POST" action="{{ route('login') }}">{{ csrf_field() }}
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <label for="email" class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-3">
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
-            <div class="brand">
-                The BoOk club
+
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <label for="password" class="col-md-4 control-label">Password</label>
+
+            <div class="col-md-3">
+                <input id="password" type="password" class="form-control" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    Login
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <a href="{{ route('register') }}">Register</a></li>
+                </button>
+            </div>
+        </div>
+
+    </form>
+      </div>
     </div>
+  
+  </nav>
+  <!-- down nav -->
+  <nav class="navbar navbar-down navbar-transparent">
+    <div class="container">
+      <div class="flex-container">  
+        <div class="navbar-header flex-item">
+          <div class="navbar-header">
+              <div class="navbar-brand">
+                    <img src="icons/icon.png" alt="The BoOk club">
+                    The BoOk club
+                </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
-        <ul  class="nav navbar-nav navbar-right">
-            @if (Route::has('login'))
-                 @if (Auth::check())
-                    <li>
-                        <a href="{{ url('/home') }}">Home</a>
-                    </li>
-                @else
-                <li>
-                    <a href="{{ url('/login') }}">Login</a>
+        </div>
+        </div>
+        <ul class="nav navbar-nav flex-item hidden-xs pull-right">
+          @foreach($items as $item)
+                <li><a href="{{ $item->url }}">{{ $item->menu_name }}</a>
+               <!--  @foreach($item['children'] as $child)
+                <ul>
+                    <li>{{ $child->menu_name }}</li>
+                </ul>
+                @endforeach -->
                 </li>
-                <li>
-                    <a href="{{ url('/register') }}">Register</a>
-                </li>
-                @endif
+            @endforeach
         </ul>
-        @endif
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
+        <!-- dropdown only moblie -->
+          <div class="dropdown visible-xs pull-right ">
+            <button id="menu-toggle" type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+              </button>
+          </div>
+        </div>  
+      </div>
+    </nav>
+  </nav> 
 
 
 <!-- end navbar -->
@@ -108,7 +157,7 @@
 
                     <div class="space-50"></div>
 
-                    <div class="row tim-row"> <!-- Start Carousel Gallery  section-->
+                    <div class="row tim-row gallery"> <!-- Start Carousel Gallery  section-->
                         <div class="space-50"></div>
                         <h1 class="text-center">The BoOk Gallery</h1>
                         <legend></legend>
@@ -164,7 +213,7 @@
                                 </div>
                                  <div class="space-50"></div>
                                 <div class="col-md-6">
-                                    <img src="{!! '/images/media/'.$post->media !!}" alt="" class="img-rounded img-responsive img-raised">
+                                    <img src="{!! '/images/media/'.$post->media !!}" alt="" class="img-rounded img-responsive img-raised thumbnails">
                                 </div>
                             </div>
                         </div>
@@ -179,7 +228,7 @@
                             <legend></legend>
                             <div class="row">
                                 @foreach( $downloads as $download )
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-xs-6">
                                         <h3>{{ $download->title }}</h3>
                                         <h5><span> Category:</span></h5>
                                         @foreach ( $download->categories as $category )
@@ -190,17 +239,79 @@
                                         <a href="{{route('download', $download->id)}}" class="btn btn-primary btn-sm">
                                             <i class="material-icons"> cloud_download</i> 
                                         Download
-                                         </a>
+                                        </a>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div><!-- End of Download section-->
 
-                </div>
-            </div>
+                    <div class="space-50"></div>
+                    
+                    <div class="row tim-row"> <!-- Start of column footer section-->
+                    <div class="space-50"></div>
+                        <div class="container">
+                            <legend></legend>
+                            <div class="row">
+                                <div class="col-md-4 col-xs-6">
+                                    <h3>{{ $leftfooter->title }}</h3>
+                                    {{ $taglessfooter }}
+                                </div>
 
-        </div>
+                                <div class="col-md-4 col-xs-6">
+                                 <h3>Menu</h3>
+                                    <ul>
+                                      @foreach($items as $item)
+                                            <div class="div-link"><a href="{{ $item->url }}" class="btn btn-simple btn-primary ">{{ $item->menu_name }}</a>
+                                            </div>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4 col-xs-6">
+                                    <h3>{{ $rightfooter->title }}</h3>
+                                    <p>
+                                        <i class="material-icons">email</i>
+                                        {{$rightfooter->email}}
+                                    </p> 
+                                    <p>
+                                        <i class="material-icons">phone</i>
+                                        {{$rightfooter->phone}}
+                                    </p>  
+                                </div>
+                            </div>
+                        </div><!-- End of multi column footer section-->
+                
+                    </div>
+                </div>
+        </div> 
+        <legend></legend>
+          <footer class="footer">
+                <div class="container">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="">
+                                About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                   Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Copyright
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright pull-right">
+                        &copy; 2017, made with <i class="material-icons">favorite</i> by me.
+                    </div>
+                </div>
+        </footer>
     </div>
 </div>
 

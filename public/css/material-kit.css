@@ -1445,7 +1445,7 @@ output {
 }
 .form-group.is-focused label,
 .form-group.is-focused label.control-label {
-  color: #9c27b0;
+  color: #fff;
 }
 .form-group.is-focused.label-placeholder label,
 .form-group.is-focused.label-placeholder label.control-label {
@@ -1472,7 +1472,7 @@ output {
 }
 .form-group.has-error label.control-label,
 .form-group.has-error .help-block {
-  color: #f44336;
+  color: #fff;
 }
 .form-group.has-success .form-control {
   box-shadow: none;
@@ -1587,7 +1587,7 @@ label.control-label {
 .form-group label.control-label {
   font-size: 11px;
   line-height: 1.07143;
-  color: #AAAAAA;
+  color: #fff;
   font-weight: 400;
   margin: 16px 0 0 0;
 }

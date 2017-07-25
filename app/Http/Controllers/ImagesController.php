@@ -111,17 +111,19 @@ class ImagesController extends Controller
           $file->move(public_path().'/images/slider', $filename);
         }
         }else{
-          $image->gallery_title = $request->slider_title;
-          $image->gallery_caption = $request->slider_caption;
+
+          $image->gallery_title = $request->gallery_title;
+          $image->gallery_caption = $request->gallery_caption;
           $image->flag_zippo = $request->choose;
+
           if($request->hasFile('slider_image')) {
             $file = Input::file('slider_image');
             $filename = time(). '-' .$file->getClientOriginalName();
             $image->slider_image = $filename;
             $file->move(public_path().'/images/gallery', $filename);
         }
-    }
-    $image->save();
+      }
+    $image->update();
     return  redirect()->route('images.show', $image->id);
     }
 

@@ -30,7 +30,10 @@
             <td>{{ $post->title }}</td>
             <td>{{ substr(strip_tags($post->body),0,50) }} {{ strlen(strip_tags($post->body)) > 50 ? "...." : "" }}</td>
             <td><img src="{!! '/images/media/'.$post->media !!}" alt="" width="25%" height="auto"></td>
-            <td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-default">view</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default">Edit</a></td>
+            <td>
+            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-default">view</a> 
+            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default">Edit</a>
+            </td>
           </tr>
           @endforeach
       </tbody>

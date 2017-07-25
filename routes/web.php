@@ -21,6 +21,13 @@ Route::group(['prefix' => '/admin'], function() {
   Route::resource('posts', 'PostsController');
   Route::resource('downloads', 'DownloadsController');
   Route::resource('images', 'ImagesController');
+  Route::resource('navigations', 'NavigationsController');
+  Route::resource('leftfooter', 'LeftFootersController');
+  Route::resource('rightfooter', 'RightFootersController');
+  
+  Route::middleware('role:superadministrator')->group(function(){
+  	Route::resource('manage', 'ManagesController');
+	});
 });
 
 Route::resource('/', 'PagesController');
@@ -30,3 +37,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/{id}', 'HomeController@show')->name('download');
+

@@ -49,6 +49,28 @@
         <li><a href="{{ route('images.index') }}"> All Galley/Slider</a></li>
       </ul>
 
+      <li data-toggle="collapse" data-target="#navigation" class="collapsed">
+        <a href="#"><i class="fa fa-globe fa-lg"></i> Manage menus <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="navigation">
+        <li><a href="{{ route('navigations.index') }}"> All menus</a></li>
+      </ul>
+
+      <li data-toggle="collapse" data-target="#footer" class="collapsed">
+        <a href="#"><i class="fa fa-globe fa-lg"></i> Manage footer <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="footer">
+        <li><a href="{{ route('leftfooter.index') }}"> Left footer</a></li>
+        <li><a href="{{ route('rightfooter.index') }}"> Right footer</a></li>
+      </ul>
+
+      <li data-toggle="collapse" data-target="#manage" class="collapsed">
+        <a href="#"><i class="fa fa-globe fa-lg"></i> Manage Users <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="manage">
+        <li><a href="{{ route('manage.index') }}"> See all users</a></li>
+      </ul>
+
     </ul>
   </div>
 </div>

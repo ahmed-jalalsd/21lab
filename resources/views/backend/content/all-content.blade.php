@@ -12,6 +12,7 @@
     <hr>
   </div>
 </div> <!--end of row  -->
+
 <div class="row">
   <div class="col-md-8 col-md-offset-4">
     <table class="table">
