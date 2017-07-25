@@ -202,7 +202,7 @@
 
                     <div class="space-50"></div>
 
-                    <div class="row tim-row"> <!-- Start of Post  section-->
+                    <div class="row tim-row video"> <!-- Start of Post  section-->
                         <div class="space-50"></div>
                         <div class="container">
                             <h1 class="text-center">A BoOk Review</h1>

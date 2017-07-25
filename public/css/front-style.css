@@ -184,6 +184,10 @@ blockquote {
     bottom: 28vh;
 }
 
+.video img {
+  width: 25%;
+}
+
 /*footer*/
 .div-link {
   display: inline-block;
@@ -235,12 +239,20 @@ blockquote {
   .gallery {
     display: none;
   }
-  blockquote {
+    blockquote {
     position: static;
     width: 100%;
     left: 0;
     bottom: 0;
+  }
+
+.video img {
+  display: none;
+}
 }
 
+@media (min-width: 1600px){
+  blockquote {
+   bottom: 16vh;
+  }
 }
-
